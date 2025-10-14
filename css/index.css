@@ -71,9 +71,15 @@ button {
     transition: all 0.3s ease;
 }
 
-.yes_button:hover {
+button:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 8px 20px rgba(161, 140, 209, 0.9);
     background: linear-gradient(135deg, #b993d6, #8ca6db);
 }
 
+.no_button:active {
+    transform: translateY(-3px) scale(1.05);
+    transform: rotate(-5deg);
+    box-shadow: 0 8px 20px rgba(255, 105, 97, 0.9);
+    background: linear-gradient(135deg, orangered, red);
+}

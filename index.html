@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="ja" href="">
     <title>Para mi cielo</title>
 </head>
 <body>
@@ -16,10 +17,13 @@
         <h3 class="subtitle">Eres la mujer mas bella del mundo, puedes con todo lo que te propongas, besos cielo.</h3>
     </div>
     <div class="button_section">
-        <a href="./yes.html">
-            <button class="yes_button">Si quiero 💗</button>
-        </a>
+        <button class="yes_button" id="yes_button">Si quiero 💗</button>
         <button class="no_button">No quiero 🥺</button>
     </div>
+
+    <audio id="musicBackground" autoplay loop>
+        <source src="./sources/mylove.mp3" type="audio/mpeg">
+    </audio>
+    <script src="./js/principal.js"></script>
 </body>
 </html>
