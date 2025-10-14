@@ -13,9 +13,41 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(135deg, #ffbcd9 0%, #ff9bb8 50%, #f687b3 100%);
+    background: radial-gradient(circle at top left, #ffbcd9 0%, #ff9bb8 40%, #f687b3 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 20px;
+
+    position: relative;
+    overflow: hidden;
 }
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    filter: blur(15px) saturate(1.2);
+    z-index: -1;
+    transform: scale(1.05);
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.03);
+    z-index: -1;
+    background-image: repeating-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.02) 0,
+            rgba(255, 255, 255, 0.02) 1px,
+            transparent 1px,
+            transparent 3px
+    );
+}
+
 
 .image {
     width: 90%;
