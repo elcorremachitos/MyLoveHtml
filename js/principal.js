@@ -13,15 +13,16 @@ music.play().catch(() => {
 yes_button.addEventListener('click', (event) => {
     event.preventDefault();
 
-    // Ocultamos los elementos originales
+    // Ocultar elementos originales
     document.querySelector('.image_section').style.display = 'none';
     document.querySelector('.title_section').style.display = 'none';
     document.querySelector('.buttons_container').style.display = 'none';
 
-    // Creamos el carrusel dentro del container
+    // Crear carrusel dentro del container existente
     const carouselContainer = document.createElement('div');
     carouselContainer.classList.add('carousel');
     document.querySelector('.container').appendChild(carouselContainer);
+
 
     // Nuevo título
     const newTitleSection = document.createElement('div');
