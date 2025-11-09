@@ -48,11 +48,9 @@ body::after {
     );
 }
 
-
-
 .image {
     width: 90%;
-    max-width: 500px;
+    max-width: 300px;
     height: auto;
     border-radius: 5%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -82,6 +80,7 @@ body::after {
 
 .button_section {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -100,7 +99,7 @@ button {
     color: #fff;
     font-weight: bold;
     box-shadow: 0 4px 15px rgba(161, 140, 209, 0.7);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 button:hover {
@@ -109,8 +108,47 @@ button:hover {
     background: linear-gradient(135deg, #b993d6, #8ca6db);
 }
 
+.yes_button{
+    margin-right: 200px;
+}
+
+.no_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-right: 200px;
+}
+
 .no_button:active {
     transform: translateY(-3px) scale(1.05) rotate(-5deg);
     box-shadow: 0 8px 20px rgba(255, 105, 97, 0.9);
     background: linear-gradient(135deg, orangered, red);
+}
+
+.buttons_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+
+.carousel {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transition: transform 0.8s ease-in-out;
 }

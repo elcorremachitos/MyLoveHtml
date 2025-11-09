@@ -1,7 +1,8 @@
 const music = document.getElementById('musicBackground');
 const yes_button = document.getElementById('yes_button');
+const no_button = document.getElementById('no_button');
 
-music.volume = 0.3;
+music.volume = 0.1;
 
 music.play().catch(() => {
     window.addEventListener('click', () => {
@@ -13,12 +14,12 @@ yes_button.addEventListener('click', (event) => {
     event.preventDefault();
 
     document.body.innerHTML = `
-        <div class="image_section">
-            <img class="image2" src="./sources/catsShiiii.gif" alt="">
+        <div class="carousel">
+            <img id="carouselImage" src="./sources/amorcito1.jpg" alt="Amorcito" width="400">
         </div>
 
         <div class="title_section">
-            <h2 class="title">eshooo cielo, eres la mejor 💕</h2>
+            <h2 class="title">Te adoro como no tienes imaginación 💗</h2>
             <h3 class="subtitle"></h3>
         </div>
 
@@ -27,4 +28,75 @@ yes_button.addEventListener('click', (event) => {
     `;
 
     document.body.appendChild(music);
+
+    const images = [
+        "amorcito1.jpg",
+        "amorcito2.jpg",
+        "amorcito3.jpg",
+        "amorcito4.jpg",
+        "amorcito5.jpg",
+        "amorcito6.jpg",
+        "amorcito7.jpg"
+    ];
+
+    let index = 0;
+    const carousel = document.querySelector('.carousel');
+
+    const imgElements = images.map((src, i) => {
+        const img = document.createElement('img');
+        img.src = `./sources/${src}`;
+        img.style.left = i === 0 ? '0' : '100%';
+        carousel.appendChild(img);
+        return img;
+    });
+
+    function nextImage() {
+        const current = imgElements[index];
+        index = (index + 1) % imgElements.length;
+        const next = imgElements[index];
+
+        current.style.transform = 'translateX(-100%)';
+        next.style.transform = 'translateX(-100%)';
+        next.style.left = '100%';
+
+        setTimeout(() => {
+            current.style.transition = 'none';
+            current.style.transform = 'translateX(0)';
+            current.style.left = '100%';
+            current.offsetHeight;
+            current.style.transition = 'transform 0.8s ease-in-out';
+        }, 800);
+    }
+
+    setInterval(nextImage, 3000);
 });
+
+
+no_button.addEventListener('click', () => {
+    const buttonRect = no_button.getBoundingClientRect();
+    const containerWidth = window.innerWidth;
+    const containerHeight = window.innerHeight;
+
+    const maxX = containerWidth - buttonRect.width - 20;
+    const maxY = containerHeight - buttonRect.height - 20;
+
+    const randomX = Math.min(Math.max(buttonRect.left + (Math.random() * 400 - 200), 20), maxX);
+    const randomY = Math.min(Math.max(buttonRect.top + (Math.random() * 300 - 150), 20), maxY);
+
+    no_button.style.position = 'absolute';
+    no_button.style.left = `${randomX}px`;
+    no_button.style.top = `${randomY}px`;
+
+    const frases = [
+        "¿Por qué quieres hacer eso? 😡",
+        "Enserio no me quele? 😭",
+        "Yo se que si me quieres 💕",
+        "Amame 😔",
+        "Este no es el boton cielito 👀",
+        "Yo te enciendo la chispa ⚡"
+    ];
+
+    const indice = Math.floor(Math.random() * frases.length);
+    no_button.innerHTML = frases[indice];
+});
+
