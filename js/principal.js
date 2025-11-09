@@ -13,22 +13,26 @@ music.play().catch(() => {
 yes_button.addEventListener('click', (event) => {
     event.preventDefault();
 
-    document.body.innerHTML = `
-        <div class="carousel">
-            <img id="carouselImage" src="./sources/amorcito1.jpg" alt="Amorcito" width="400">
-        </div>
+    // Ocultamos los elementos originales
+    document.querySelector('.image_section').style.display = 'none';
+    document.querySelector('.title_section').style.display = 'none';
+    document.querySelector('.buttons_container').style.display = 'none';
 
-        <div class="title_section">
-            <h2 class="title">Te adoro como no tienes imaginación 💗</h2>
-            <h3 class="subtitle"></h3>
-        </div>
+    // Creamos el contenedor del carrusel
+    const carouselContainer = document.createElement('div');
+    carouselContainer.classList.add('carousel');
+    document.querySelector('.container').appendChild(carouselContainer);
 
-        <div class="button_section">
-        </div>
+    // Agregamos título debajo del carrusel
+    const newTitleSection = document.createElement('div');
+    newTitleSection.classList.add('title_section');
+    newTitleSection.innerHTML = `
+        <h2 class="title">Te adoro como no tienes imaginación 💗</h2>
+        <h3 class="subtitle"></h3>
     `;
+    document.querySelector('.container').appendChild(newTitleSection);
 
-    document.body.appendChild(music);
-
+    // Lista de imágenes
     const images = [
         "amorcito1.jpg",
         "amorcito2.jpg",
@@ -40,13 +44,12 @@ yes_button.addEventListener('click', (event) => {
     ];
 
     let index = 0;
-    const carousel = document.querySelector('.carousel');
 
     const imgElements = images.map((src, i) => {
         const img = document.createElement('img');
         img.src = `./sources/${src}`;
         img.style.left = i === 0 ? '0' : '100%';
-        carousel.appendChild(img);
+        carouselContainer.appendChild(img);
         return img;
     });
 
@@ -63,14 +66,13 @@ yes_button.addEventListener('click', (event) => {
             current.style.transition = 'none';
             current.style.transform = 'translateX(0)';
             current.style.left = '100%';
-            current.offsetHeight;
+            current.offsetHeight; // fuerza reflow
             current.style.transition = 'transform 0.8s ease-in-out';
         }, 800);
     }
 
     setInterval(nextImage, 3000);
 });
-
 
 no_button.addEventListener('click', () => {
     const buttonRect = no_button.getBoundingClientRect();
@@ -99,4 +101,3 @@ no_button.addEventListener('click', () => {
     const indice = Math.floor(Math.random() * frases.length);
     no_button.innerHTML = frases[indice];
 });
-
