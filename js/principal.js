@@ -18,12 +18,12 @@ yes_button.addEventListener('click', (event) => {
     document.querySelector('.title_section').style.display = 'none';
     document.querySelector('.buttons_container').style.display = 'none';
 
-    // Creamos el contenedor del carrusel
+    // Creamos el carrusel dentro del container
     const carouselContainer = document.createElement('div');
     carouselContainer.classList.add('carousel');
     document.querySelector('.container').appendChild(carouselContainer);
 
-    // Agregamos título debajo del carrusel
+    // Nuevo título
     const newTitleSection = document.createElement('div');
     newTitleSection.classList.add('title_section');
     newTitleSection.innerHTML = `
@@ -48,7 +48,7 @@ yes_button.addEventListener('click', (event) => {
     const imgElements = images.map((src, i) => {
         const img = document.createElement('img');
         img.src = `./sources/${src}`;
-        img.style.left = i === 0 ? '0' : '100%';
+        img.style.transform = i === 0 ? 'translateX(0)' : 'translateX(100%)';
         carouselContainer.appendChild(img);
         return img;
     });
@@ -59,13 +59,11 @@ yes_button.addEventListener('click', (event) => {
         const next = imgElements[index];
 
         current.style.transform = 'translateX(-100%)';
-        next.style.transform = 'translateX(-100%)';
-        next.style.left = '100%';
+        next.style.transform = 'translateX(0)';
 
         setTimeout(() => {
             current.style.transition = 'none';
-            current.style.transform = 'translateX(0)';
-            current.style.left = '100%';
+            current.style.transform = 'translateX(100%)';
             current.offsetHeight; // fuerza reflow
             current.style.transition = 'transform 0.8s ease-in-out';
         }, 800);
