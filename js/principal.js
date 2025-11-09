@@ -2,7 +2,7 @@ const music = document.getElementById('musicBackground');
 const yes_button = document.getElementById('yes_button');
 const no_button = document.getElementById('no_button');
 
-music.volume = 0.1;
+music.volume = 0.25;
 
 music.play().catch(() => {
     window.addEventListener('click', () => {
