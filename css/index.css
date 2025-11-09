@@ -28,16 +28,16 @@ body::before {
     position: absolute;
     inset: 0;
     background: inherit;
-    filter: blur(10px) saturate(1.2); /* menos blur */
+    filter: blur(10px);
     z-index: -1;
-    transform: scale(1); /* sin expandir más allá de la ventana */
+    transform: scale(1);
 }
 
 body::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.015); /* más sutil */
+    background: rgba(255,255,255,0.01);
     z-index: -1;
     background-image: repeating-linear-gradient(
             45deg,
